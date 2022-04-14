@@ -2,13 +2,12 @@
 import { ref } from "vue";
 
 defineProps({
-  id: Number,
-  image: String,
-  name: String,
-  price: Number,
-  type: String,
-  rating: Number,
-  transaction: Number,
+  col1: Number,
+  col2: String,
+  col3: String,
+  col4: String,
+  col5: Number,
+  col6: Number,
 });
 
 const isOpen = ref(false);
@@ -17,37 +16,47 @@ const isOpen = ref(false);
 <template>
   <div class="wrapper content">
     <!-- No -->
-    <div class="number">
-      <span>{{ id }}</span>
+    <div class="column-1">
+      <span>{{ col1 }}</span>
     </div>
 
     <!-- Photo -->
-    <div class="photo">
-      <img class="w-28 h-28 object-cover" :src="'src/assets/' + image" :alt="name" />
+    <div class="column-2">
+      <img class="w-28 h-28 object-cover" :src="'assets/' + col2" :alt="col3" />
     </div>
 
     <!-- Product Name -->
-    <div class="product">
-      <h5>{{ name }}</h5>
+    <div class="column-3">
+      <h5>{{ col3 }}</h5>
     </div>
 
     <!-- Type -->
-    <div class="type">
-      <span>{{ type }}</span>
+    <div class="column-4">
+      <span>{{ col4 }}</span>
     </div>
 
     <!-- Rating -->
-    <div class="rating">
-      <span>{{ rating }}</span>
+    <div class="column-5">
+      <span>{{ col5 }}</span>
     </div>
 
     <!-- Total -->
-    <div class="total">
-      <span>{{ transaction }}</span>
+    <div class="column-6">
+      <span>{{ col6 }}</span>
+    </div>
+
+    <!-- Total -->
+    <div class="column-7">
+      <span>{{ col7 }}</span>
+    </div>
+
+    <!-- Total -->
+    <div class="column-8">
+      <span>{{ col8 }}</span>
     </div>
 
     <!-- Edit -->
-    <div class="edit">
+    <div class="column-9">
       <button class="btn">
         <svg
           class="w-5 h-5"
@@ -81,7 +90,7 @@ const isOpen = ref(false);
     </div>
 
     <!-- Hapus -->
-    <div class="delete">
+    <div class="column-10">
       <div class="root">
         <button class="btn" @click="isOpen = true">
           <svg
@@ -123,35 +132,43 @@ const isOpen = ref(false);
   @apply py-8;
 }
 
-.wrapper .number {
+.wrapper .column-1 {
   @apply col-span-2;
 }
 
-.wrapper .photo {
+.wrapper .column-2 {
+  @apply col-span-3;
+}
+
+.wrapper .column-3 {
   @apply col-span-4;
 }
 
-.wrapper .product {
-  @apply col-span-5;
+.wrapper .column-4 {
+  @apply col-span-3 capitalize;
 }
 
-.wrapper .type {
-  @apply col-span-3;
-}
-
-.wrapper .rating {
-  @apply col-span-3;
-}
-
-.wrapper .total {
-  @apply col-span-3;
-}
-
-.wrapper .edit {
+.wrapper .column-5 {
   @apply col-span-2;
 }
 
-.wrapper .delete {
+.wrapper .column-6 {
+  @apply col-span-2;
+}
+
+.wrapper .column-7 {
+  @apply col-span-2;
+}
+
+.wrapper .column-8 {
+  @apply col-span-2;
+}
+
+.wrapper .column-9 {
+  @apply col-span-2;
+}
+
+.wrapper .column-10 {
   @apply col-span-2;
 }
 

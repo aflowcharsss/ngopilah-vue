@@ -1,10 +1,9 @@
 <script setup>
 import { ref } from "vue";
-import axios from 'axios';
+import axios from "axios";
 
 import Heading from "../../components/Heading.vue";
 import Table from "../../components/Table.vue";
-import Add from "../../components/Dashboard/Add.vue";
 
 const heading = {
   primary: "Hey Min, Mau Ngapain?",
@@ -52,11 +51,10 @@ const heading = {
 
 let products = ref(null);
 
-axios.get('http://ngopilah.test/api/products')
-  .then(get => 
-    products.value = get.data.data
-  )
-  .catch(error => console.log(error));
+axios
+  .get("http://ngopilah.test/api/products")
+  .then((get) => (products.value = get.data.data))
+  .catch((error) => console.log(error));
 
 const isOpen = ref(false);
 </script>
@@ -64,23 +62,7 @@ const isOpen = ref(false);
 <template>
   <section class="products">
     <div class="wrapper">
-      
-      <Heading
-        :primary="heading.primary"
-        :paraOne="heading.paraOne"
-      />
-
-      <div class="root">
-        <button class="btn" @click="isOpen = true">Tambah Produk</button>
-        <button class="btn" >Lihat Pengguna</button>
-
-        <Teleport to="body">
-          <div v-if="isOpen" class="modal">
-            <!-- Add Products -->
-            <Add @close="isOpen = false" />
-          </div>
-        </Teleport>
-      </div>
+      <Heading :primary="heading.primary" :paraOne="heading.paraOne" />
 
       <div class="table">
         <div class="wrapper head">
@@ -121,7 +103,6 @@ const isOpen = ref(false);
 
 .root .btn {
   @apply px-3 py-2 border-[1.5px] border-emerald-900 text-xs font-semibold text-emerald-900 cursor-pointer uppercase;
-
 }
 
 .modal {

@@ -1,14 +1,15 @@
 <script setup>
 import { ref } from "vue";
-import Delete from "../Dashboard/Delete.vue";
 
 defineProps({
-  col1: Number,
+  col1: String,
   col2: String,
   col3: String,
   col4: String,
-  col5: Number,
-  col6: Number,
+  col5: String,
+  col6: String,
+  col7: String,
+  col8: String,
 });
 
 const isOpen = ref(false);
@@ -17,37 +18,47 @@ const isOpen = ref(false);
 <template>
   <div class="wrapper content">
     <!-- No -->
-    <div class="column-1">
+    <div class="col-1">
       <span>{{ col1 }}</span>
     </div>
 
     <!-- Photo -->
-    <div class="column-2">
+    <div class="col-2">
       <img class="w-28 h-28 object-cover" :src="'assets/' + col2" :alt="col3" />
     </div>
 
     <!-- Product Name -->
-    <div class="column-3">
+    <div class="col-3">
       <h5>{{ col3 }}</h5>
     </div>
 
     <!-- Type -->
-    <div class="column-4">
+    <div class="col-4">
       <span>{{ col4 }}</span>
     </div>
 
     <!-- Rating -->
-    <div class="column-5">
+    <div class="col-5">
       <span>{{ col5 }}</span>
     </div>
 
     <!-- Total -->
-    <div class="column-6">
-      <span>{{ +col6 }}</span>
+    <div class="col-6">
+      <span>{{ col6 }}</span>
+    </div>
+
+    <!-- Total -->
+    <div class="col-7">
+      <span>{{ col7 }}</span>
+    </div>
+
+    <!-- Total -->
+    <div class="col-8">
+      <span>{{ col8 }}</span>
     </div>
 
     <!-- Edit -->
-    <div class="column-7">
+    <div class="col-9">
       <button class="btn">
         <svg
           class="w-5 h-5"
@@ -81,7 +92,7 @@ const isOpen = ref(false);
     </div>
 
     <!-- Hapus -->
-    <div class="column-8">
+    <div class="col-10">
       <div class="root">
         <button class="btn" @click="isOpen = true">
           <svg
@@ -123,51 +134,47 @@ const isOpen = ref(false);
   @apply py-8;
 }
 
-.wrapper .column-1 {
-  @apply col-span-2;
+.content {
+  @apply grid grid-cols-24 gap-x-4 items-center border-b-[1.5px] border-emerald-800;
 }
 
-.wrapper .column-2 {
+.wrapper .col-1 {
+  @apply col-span-1;
+}
+
+.wrapper .col-2 {
+  @apply col-span-3;
+}
+
+.wrapper .col-3 {
+  @apply col-span-3;
+}
+
+.wrapper .col-4 {
+  @apply col-span-3;
+}
+
+.wrapper .col-5 {
   @apply col-span-4;
 }
 
-.wrapper .column-3 {
-  @apply col-span-5;
-}
-
-.wrapper .column-4 {
-  @apply col-span-3 capitalize;
-}
-
-.wrapper .column-5 {
+.wrapper .col-6 {
   @apply col-span-3;
 }
 
-.wrapper .column-6 {
+.wrapper .col-7 {
+  @apply col-span-2;
+}
+
+.wrapper .col-8 {
   @apply col-span-3;
 }
 
-.wrapper .column-7 {
-  @apply col-span-2;
+.wrapper .col-9 {
+  @apply col-span-1;
 }
 
-.wrapper .column-8 {
-  @apply col-span-2;
-}
-
-.root {
-  @apply relative flex justify-center items-center;
-}
-
-.btn {
-  @apply cursor-pointer;
-}
-
-.modal {
-  @apply fixed inset-0 bg-emerald-900 bg-opacity-10 w-full h-full flex justify-center items-center;
-}
-
-.modal > div {
-  @apply bg-emerald-50 p-16 min-w-full h-screen container mx-auto;
+.wrapper .col-10 {
+  @apply col-span-1;
 }
 </style>

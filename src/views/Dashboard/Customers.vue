@@ -4,7 +4,7 @@ import axios from "axios";
 import { useRouter } from "vue-router";
 
 import Heading from "../../components/Heading.vue";
-import TableItems from "../../components/TableItems.vue";
+import TableCustomer from "../../components/TableCustomer.vue";
 
 const router = useRouter();
 
@@ -12,22 +12,21 @@ const heading = {
   primary: "Hey Min, Mau Ngapain?",
   paraOne: "Pingin Tambah Item?",
   ctaOne: "Klik Disini",
-  urlOneTo: "items/add",
+  urlOneTo: "customers/add",
 };
 
-let isOpen = () => {
-  router.push("/items/add");
-};
-let items = ref([]);
+let customers = ref([]);
 
 onMounted(async () => {
-  getItems();
+  getCustomers();
 });
 
-const getItems = async () => {
-  const response = await axios.get("http://ngopilah.test/api/items");
-  items.value = response.data.data;
+const getCustomers = async () => {
+  const response = await axios.get("http://ngopilah.test/api/customers");
+  customers.value = response.data.data;
 };
+
+console.log(customers);
 </script>
 
 <template>
@@ -43,23 +42,27 @@ const getItems = async () => {
       <div class="table">
         <div class="wrapper head">
           <h6 class="col-1">No</h6>
-          <h6 class="col-2">Foto</h6>
-          <h6 class="col-3">Produk</h6>
-          <h6 class="col-4">Tipe</h6>
-          <h6 class="col-5">Stok</h6>
-          <h6 class="col-6">Harga</h6>
-          <h6 class="edit">Edit</h6>
-          <h6 class="delete">Hapus</h6>
+          <h6 class="col-2">Identitas</h6>
+          <h6 class="col-3">Nama</h6>
+          <h6 class="col-4">Kontak</h6>
+          <h6 class="col-5">Email</h6>
+          <h6 class="col-6">Alamat</h6>
+          <h6 class="col-7">Diskon</h6>
+          <h6 class="col-8">Tipe Diskon</h6>
+          <h6 class="col-9">Edit</h6>
+          <h6 class="col-10">Hapus</h6>
         </div>
 
-        <div v-for="item in items" :key="item.id">
-          <TableItems
-            :col1="item.id"
-            :col2="item.photo"
-            :col3="item.name"
-            :col4="item.type"
-            :col5="parseInt(item.stock)"
-            :col6="parseInt(item.price)"
+        <div v-for="customer in customers" :key="customer.id">
+          <TableCustomer
+            :col1="customer.id"
+            :col2="customer.identity"
+            :col3="customer.name"
+            :col4="customer.contact"
+            :col5="customer.email"
+            :col6="customer.address"
+            :col7="customer.discount"
+            :col8="customer.discount_type"
           />
         </div>
       </div>
@@ -101,15 +104,15 @@ const getItems = async () => {
 }
 
 .wrapper .col-1 {
-  @apply col-span-2;
+  @apply col-span-1;
 }
 
 .wrapper .col-2 {
-  @apply col-span-4;
+  @apply col-span-3;
 }
 
 .wrapper .col-3 {
-  @apply col-span-5;
+  @apply col-span-3;
 }
 
 .wrapper .col-4 {
@@ -117,18 +120,26 @@ const getItems = async () => {
 }
 
 .wrapper .col-5 {
-  @apply col-span-3;
+  @apply col-span-4;
 }
 
 .wrapper .col-6 {
   @apply col-span-3;
 }
 
-.wrapper .edit {
+.wrapper .col-7 {
   @apply col-span-2;
 }
 
-.wrapper .delete {
-  @apply col-span-2;
+.wrapper .col-8 {
+  @apply col-span-3;
+}
+
+.wrapper .col-9 {
+  @apply col-span-1;
+}
+
+.wrapper .col-10 {
+  @apply col-span-1;
 }
 </style>

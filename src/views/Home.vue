@@ -1,5 +1,5 @@
 <script setup>
-import Product from "../components/Product.vue";
+import ListProduct from "../components/ListProduct.vue";
 import Heading from "../components/Heading.vue";
 
 const heading = {
@@ -7,7 +7,7 @@ const heading = {
   paraOne: "Cek Aja Semua",
   paraTwo: "Dijamin Mantap",
   ctaOne: "Cek Sekarang",
-  urlOneTo: "products"
+  urlOneTo: "products",
 };
 </script>
 
@@ -20,7 +20,7 @@ const heading = {
       :ctaOne="heading.ctaOne"
       :urlOneTo="heading.urlOneTo"
     />
-    <Product />
+    <ListProduct />
   </div>
 </template>
 

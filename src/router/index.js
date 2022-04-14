@@ -5,6 +5,8 @@ import Register from "../views/Register.vue";
 import Login from "../views/Login.vue";
 import Products from "../views/Dashboard/Products.vue";
 import Items from "../views/Dashboard/Items.vue";
+import AddItems from "../views/Dashboard/AddItems.vue";
+import Customers from "../views/Dashboard/Customers.vue";
 
 /**
  * Router
@@ -17,6 +19,8 @@ const router = createRouter({
     { path: "/login", name: "Login", component: Login },
     { path: "/products", name: "Products", component: Products },
     { path: "/items", name: "Items", component: Items },
+    { path: "/items/add", name: "AddItems", component: AddItems },
+    { path: "/customers", name: "Customers", component: Customers },
   ],
 });
 
